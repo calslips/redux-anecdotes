@@ -17,7 +17,7 @@ export const creationNotice = (anecdote) => {
 export const removeNotice = () => {
   return {
     type: 'REMOVE_NOTICE',
-    notification: ''
+    notification: initialState
   }
 }
 
