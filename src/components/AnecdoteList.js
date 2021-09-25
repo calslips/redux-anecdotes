@@ -2,7 +2,6 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { vote } from '../reducers/anecdoteReducer'
 import { voteNotice, removeNotice } from '../reducers/notificationReducer'
-import Notification from './Notification'
 
 const Anecdote = ({ content, votes, handleClick }) => {
   return (
@@ -24,8 +23,6 @@ const AnecdoteList = () => {
 
   return (
     <>
-      <h2>Anecdotes</h2>
-      <Notification />
       {anecdotes.sort((a, b) => b.votes - a.votes).map(anecdote =>
         <Anecdote
           key={anecdote.id}
