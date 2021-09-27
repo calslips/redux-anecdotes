@@ -1,20 +1,19 @@
 const initialState = '';
 
-export const voteNotice = (anecdote) => {
-  return {
-    type: 'VOTE_NOTICE',
-    notification: `you voted '${anecdote}'`
-  }
-};
-
-export const creationNotice = (anecdote) => {
-  return {
-    type: 'CREATION_NOTICE',
-    notification: `you created '${anecdote}'`
+export const setNotice = (noticeContent, durationInSeconds) => {
+  return (dispatch) => {
+    const msDuration = durationInSeconds * 1000
+    dispatch({
+      type: 'POST_NOTICE',
+      notification: noticeContent
+    })
+    setTimeout(() => {
+      dispatch(removeNotice())
+    }, msDuration)
   }
 }
 
-export const removeNotice = () => {
+const removeNotice = () => {
   return {
     type: 'REMOVE_NOTICE',
     notification: initialState
@@ -23,9 +22,7 @@ export const removeNotice = () => {
 
 const notificationReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'VOTE_NOTICE':
-      return action.notification
-    case 'CREATION_NOTICE':
+    case 'POST_NOTICE':
       return action.notification
     case 'REMOVE_NOTICE':
       return initialState
