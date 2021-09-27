@@ -27,13 +27,13 @@ const AnecdoteList = () => {
 
   return (
     <>
-      {anecdotes.sort((a, b) => b.votes - a.votes).map(anecdote =>
+      {anecdotes.sort((a, b) => b.votes - a.votes).map((anecdote) =>
         <Anecdote
           key={anecdote.id}
           content={anecdote.content}
           votes={anecdote.votes}
           handleClick={() => {
-            dispatch(vote(anecdote.id))
+            dispatch(vote(anecdote))
             dispatch(voteNotice(anecdote.content))
             setTimeout(() => {dispatch(removeNotice())}, 5000)
           }}
