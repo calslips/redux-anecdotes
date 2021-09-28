@@ -9,7 +9,7 @@ const AnecdoteForm = ({ createAnecdote, setNotice }) => {
     const anecdoteContent = event.target.anecdote.value
     event.target.anecdote.value = ''
     createAnecdote(anecdoteContent)
-    setNotice(`new anecdote '${anecdoteContent}'`, 10)
+    setNotice(`new anecdote '${anecdoteContent}'`, 5)
   }
 
   return (

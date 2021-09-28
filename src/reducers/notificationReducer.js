@@ -1,13 +1,15 @@
-const initialState = '';
+const initialState = ''
+let timeoutID
 
 export const setNotice = (noticeContent, durationInSeconds) => {
+  clearTimeout(timeoutID)
   return (dispatch) => {
     const msDuration = durationInSeconds * 1000
     dispatch({
       type: 'POST_NOTICE',
       notification: noticeContent
     })
-    setTimeout(() => {
+    timeoutID = setTimeout(() => {
       dispatch(removeNotice())
     }, msDuration)
   }
